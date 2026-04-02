@@ -21,7 +21,7 @@
 
 <div>
     @* Security check for Assignment 3 *@
-    @if (User.Identity.IsAuthenticated == true)
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
     {
         <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a> @:|
     }

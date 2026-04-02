@@ -1,7 +1,19 @@
 ﻿@model IEnumerable<VintageGameStore.Models.Game>
 
 <h1>Games List</h1>
-<p><a asp-action="Create" class="btn btn-primary">Add New Game</a></p>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <p class="mb-0">
+        <a asp-action="Create" class="btn btn-primary">Add New Game</a>
+    </p>
+    <form asp-action="Index" method="get" class="d-flex">
+        <input type="text" name="searchString" class="form-control me-2" placeholder="Search by title..." style="width: 250px;" />
+        <button type="submit" class="btn btn-outline-success">Search</button>
+        @if (!string.IsNullOrEmpty(Context.Request.Query["searchString"]))
+        {
+            <a asp-action="Index" class="btn btn-link text-decoration-none">Clear</a>
+        }
+    </form>
+</div>
 
 <table class="table">
     <thead>
